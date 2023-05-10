@@ -1,3 +1,6 @@
+For this tutorial, we need the ESP32 Dev Module board and two sensors: DHT21/AM2301A humidity and temperature sensor and
+Barometer BMP280 3.3V (atmospheric pressure sensor)
+
 # Tutorial
 This step-by-step tutorial will help you create your Weather Station in a very simple and clear way.
  # 1. Blynk Setup:
