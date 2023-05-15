@@ -1,66 +1,81 @@
-# Overview
-This step-by-step tutorial will help you create your Weather Station in a very simple and clear way. You will be able to monitor temperature, humidity, atmospheric pressure, and altitude!
-# Toolchain
-* Platformio IDE: Download and install the VSCode and Platformio IDE 
-* Blynk library for PlatformIO
-* Adafruit BMP280 Library 
-* DHT sensor library
+# Introduction
+
+This project will help to make your own weather station at home. With one ESP32 board and 2 sensors, we will create a full-fledged weather station with 4 parameters: temperature, humidity, pressure and altitude. There will also be automation here, which will send a notification in the application when the temperature drops below or rises above the comfort level for the home, as well as about too high or too low humidity, which will help to make the microclimate at home comfortable.
+
 # Components Used in This Project
 * Blynk web dashboard
 * ESP32 Dev Module
 * DHT21/AM2301A humidity and temperature sensor
 * Barometer BMP280 3.3V
-# Step-by-Step Guide
- ### 1. Blynk Dashboard Setup
-* Open Blynk.Cloud and log in your account
-* Open the "Templates" tab and click "+ New Template"
-* Go to the "Datastreams" tab
-* Create 4 Datastreams:
-1. Virtual pin V0, Name "Temperature", Data type "Double", Units "Celsius", Min "-10", Max "45"
-2. Virtual pin V1, Name "Humidity", Data type "Double", Units "Percentage", Min "0", Max "100"
-3. Virtual pin V3, Name "Altitude", Data type "Double", Units "Meter", Min "0", Max "5000"
-4. Virtual pin V4, Name "Pressure", Data type "Double", Units "Hectopascal", Min "0", Max "1070"
-* Go to the "Web Dashboard" tab
-* Add 5 Widgets:
-1.Label, Title "Temperature", Datastream "Temperature V0", Show Level - On, Level Position "Vertical"
-2.Label, Title "Humidity", Datastream "Humidity V1", Show Level - On, Level Position "Vertical"
-3.Label, Title "Altitude", Datastream "Altitude V3", Show Level - On, Level Position "Vertical"
-4.Label, Title "Pressure", Datastream "Pressure V4", Show Level - On, Level Position "Vertical"
-5.Chart, Title "", Datastreams: 1. Temperature V0, Show Y-axis - On, Autoscale - On, 2. Humidity V1, Show Y-axis - On, Autoscale - On
-* Add a new tab for Dashboard named "Historical Data"
-* Add there 3 widgets:
-1. Heatmap Chart, Title "Heatmap", Datastreams: 1. Temperature V0, Show datastream name - On, Enable Zoom - On
-2. Chart, Title "Temperature", Datastreams: 1. Temperature V0, Show Y-axis - On
-3. Chart, Title "Humidity", Datastreams: 1. Humidity V1, Show Y-axis - On
-* Click "Save and Apply"
-* Go to the "Search > My devices" tab
-* Click "+ New Device", choose "From Template" and add a name, choose "Weather Station" template.
-* Click "Save". Device created!
+
+# Prepare your Hardware 
+
+For this tutorial, we need the ESP32 Dev Module board, two sensors: DHT21/AM2301A humidity and temperature sensor and
+Barometer BMP280 3.3V (atmospheric pressure sensor) and USB cable to connect board to computer.
+How to connect ESP32 to DHT21/AM2301A humidity and temperature sensor
+*Picture*
+You have to connect:
+1. 5V to 5V in the ESP32
+2. GND to GND in the ESP32
+3. Data to IO25 in the ESP32
+
+How to connect ESP32 to Barometer BMP280 3.3V (atmospheric pressure sensor)
+*Picture*
+
+#  Prepare required software
+
+* Install PlatformIO
+* Install Blynk library for PlatformIO and create new sketch:
+  1. Open PlatformIO Home > “+ New Project”
+  2. Add name, select hardware (I have Esp32 Dev Module), select Arduino framework, click "Finish"
+  3. Open PlatformIO Home > Libraries
+  4. Enter in the search "Blynk" and find this library
+  5. Click on it and click "Add to project"
+  6. Choose your project and click "Add"
+
+# Prepare the Firmware and upload it to your device
+
+Now you need to include TemplateID, AuthToken (unique identifier of your device) and WiFi credentials to the sketch. Follow next steps to do it.
+
+* Click on the Activate device action in Template Home tab (this tab should open automatically once you've pressed the Use Blueprint button)
+* Enter the Wi-Fi credentials your device will use
+* Copy the sketch and paste it to the IDE
+* Flash your device :
+1. Open the "src" folder and open the "Main.cpp" file
+2. Insert the code
+3. Press "PlatformIO: Upload"
+* The device should open automatically
 
 
-### 2. Installing the Blynk library and libraries for our sensors:
-* Open Visual Studio Code
-* Open PlatformIO Home > “+ New Project”
-* Add name, select hardware (I have Esp32 Dev Module), select Arduino framework, click "Finish"
-* Open PlatformIO Home > Libraries
-* Enter in the search "Blynk" and find this library
-* Click on it and click "Add to project"
-* Choose your project and click "Add"
-Perfect, Blynk library added! Lets add libraries for our sensors:
-* Turn back to libraries
-* Enter in the search "Adafruit BMP280 Library " and inslall it as in previous steps
-* Enter in the search "DHT sensor library " and inslall it as in previous steps
-Now that we've made all the necessary settings, let's finish by uploading the code to our board.
+
+# Next steps after the device is activated
+
+* Explore the Blynk Web Console and Blynk IoT app, try controlling your device from both
+* Explore Blynk Documentation and learn how to work with Virtual Pins
+* Improve the code for your needs
+* Add more devices
 
 
-### 3. Uploading the code
+# Create automations
+Automation templates are already created in the template, you just need to enable them.
+To do this, you need to open the "automation" tab and on the right you will have a list of recommended automations. There will be 4 automations:
+1. Send a notification if the temperature is above comfortable
+2. Send notification if the temperature is below comfortable
+3. Send notification if humidity is higher than comfortable
+4. Send notification if the humidity is below comfortable
 
-* Open the "src" folder and open the "Main.cpp" file
-* Insert the code
-* Replace Template ID, Template Name, and Auth Token placeholders in the code. Find them in the Blynk Console > Device >Device Info > FIRMWARE CONFIGURATION window 
-* Press "PlatformIO: Upload"
+"Picture*
+In order to add them, click on automation and click "Save" at the top. You can also change the temperature and humidity that are comfortable for you.
 
-And that's it! Enjoy your own Weather Station!
+# Troubleshooting
+
+* Make sure you have the latest Blynk Library installed
+* Check that all the dependencies and configurations are correct
+* Check your sketch for errors. Click the Verify button to compile your sketch without uploading it
+* Check your board and port selections
+* Check your connections. Your board needs to be connected with a data USB cable (charge-only cables will not work). Make sure the cable is fully inserted in the port on each end. Try a different USB cable, and avoid hubs and other adapters if possible. Remove connections to the board pins, especially the 0 (RX) and 1 (TX) digital pins.
+* Check that your boards and libraries are up to date
+
 
 
 
