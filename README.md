@@ -3,7 +3,7 @@
 This project will help to make your own weather station at home. With one ESP32 board and 2 sensors, we will create a full-fledged weather station with 4 parameters: temperature, humidity, pressure and altitude. There will also be automation here, which will send a notification in the application when the temperature drops below or rises above the comfort level for the home, as well as about too high or too low humidity, which will help to make the microclimate at home comfortable.
 
 # Components Used in This Project
-* Blynk web dashboard
+* Blynk web dashboard and Blynk App for mobile dashboard
 * ESP32 Dev Module
 * DHT21/AM2301A humidity and temperature sensor
 * Barometer BMP280 3.3V
