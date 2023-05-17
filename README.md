@@ -28,10 +28,11 @@ How to connect ESP32 to Barometer BMP280 3.3V (atmospheric pressure sensor)
 * Install Blynk library for PlatformIO and create new sketch:
   1. Open PlatformIO Home > “+ New Project”
   2. Add name, select hardware (I have Esp32 Dev Module), select Arduino framework, click "Finish"
-  3. Open PlatformIO Home > Libraries
-  4. Enter in the search "Blynk" and find this library
-  5. Click on it and click "Add to project"
-  6. Choose your project and click "Add"
+  3. Open "Plathormio.ini" file and paste there this code:
+  lib_deps = 
+	adafruit/Adafruit BMP280 Library@^2.6.6
+	adafruit/DHT sensor library@^1.4.4
+	blynkkk/Blynk@^1.2.0
 
 # Prepare the Firmware and upload it to your device
 
@@ -47,7 +48,6 @@ Now you need to include TemplateID, AuthToken (unique identifier of your device)
 * The device should open automatically
 
 
-
 # Next steps after the device is activated
 
 * Explore the Blynk Web Console and Blynk IoT app, try controlling your device from both
@@ -56,16 +56,12 @@ Now you need to include TemplateID, AuthToken (unique identifier of your device)
 * Add more devices
 
 
-# Create automations
-Automation templates are already created in the template, you just need to enable them.
-To do this, you need to open the "automation" tab and on the right you will have a list of recommended automations. There will be 4 automations:
-1. Send a notification if the temperature is above comfortable
-2. Send notification if the temperature is below comfortable
-3. Send notification if humidity is higher than comfortable
-4. Send notification if the humidity is below comfortable
+# Also you can create automations :
 
-"Picture*
-In order to add them, click on automation and click "Save" at the top. You can also change the temperature and humidity that are comfortable for you.
+To do this, you need to open the "automation" tab. Click "+ Create automations" and choose "Device state".
+Add name and choose when you want to receive a notification (for example, if the temperature is above 28 degrees or below 18, as well as the humidity is above 60% or below 30%). For this, in the block "When" choose your device and choose parametr, that you want to track. You may set "The less then" and "The greater then" and indicate your desired temperature and humidity. Next step is to choose what to do. You can receve information on the email or in the in-app notification. Choose what wil be comfortable for you and click "Save". This will help you to know when the indicators are too low or too high and correct it.
+
+
 
 # Troubleshooting
 
