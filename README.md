@@ -20,7 +20,7 @@ You have to connect:
 3. Data to IO25 in the ESP32
 
 How to connect ESP32 to Barometer BMP280 3.3V (atmospheric pressure sensor)
-![Connecting BME]https://raw.githubusercontent.com/YuliiaRudevych/blueprints/main/Weather%20Station/Images/interfacing-bmp280-and-esp32-circuit-diagram.webp
+![Connecting BME](https://raw.githubusercontent.com/YuliiaRudevych/blueprints/main/Weather%20Station/Images/interfacing-bmp280-and-esp32-circuit-diagram.webp)
 #  Prepare required software
 
 * Install PlatformIO
