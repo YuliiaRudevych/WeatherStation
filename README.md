@@ -13,14 +13,14 @@ This project will help to make your own weather station at home. With one ESP32 
 For this tutorial, we need the ESP32 Dev Module board, two sensors: DHT21/AM2301A humidity and temperature sensor and
 Barometer BMP280 3.3V (atmospheric pressure sensor) and USB cable to connect board to computer.
 How to connect ESP32 to DHT21/AM2301A humidity and temperature sensor
-![Connecting DHT21] (https://github.com/YuliiaRudevych/blueprints/blob/main/Weather%20Station/Images/DHT21-Am2301-temperature-humidity-sensor-pinout.jpg)
+![Connecting DHT21](https://github.com/YuliiaRudevych/blueprints/blob/main/Weather%20Station/Images/DHT21-Am2301-temperature-humidity-sensor-pinout.jpg)
 You have to connect:
 1. 5V to 5V in the ESP32
 2. GND to GND in the ESP32
 3. Data to IO25 in the ESP32
 
 How to connect ESP32 to Barometer BMP280 3.3V (atmospheric pressure sensor)
-![Connecting BME] https://raw.githubusercontent.com/YuliiaRudevych/blueprints/main/Weather%20Station/Images/interfacing-bmp280-and-esp32-circuit-diagram.webp
+![Connecting BME]https://raw.githubusercontent.com/YuliiaRudevych/blueprints/main/Weather%20Station/Images/interfacing-bmp280-and-esp32-circuit-diagram.webp
 #  Prepare required software
 
 * Install PlatformIO
